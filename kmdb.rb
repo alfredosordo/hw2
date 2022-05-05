@@ -293,12 +293,24 @@ end
 
 
 
-
 # Prints a header for the cast output
-# puts ""
-# puts "Top Cast"
-# puts "========"
+puts ""
+puts ""
+puts "Top Cast"
+puts "========"
 # puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
-# TODO!
+
+roles = Role.all
+
+for role in roles
+    movie = Movie.find_by({ "id" => role["movie_id"] })
+    actor = Actor.find_by({ "id" => role["actor_id"] })
+
+    title = movie["title"]
+    name = actor["name"]
+    character_name = role["character_name"]
+    
+    puts "#{title} #{name} #{character_name}"
+end
