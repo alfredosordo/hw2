@@ -271,12 +271,28 @@ new_role.save
 
 
 # Prints a header for the movies output
-# puts "Movies"
-# puts "======"
+puts "Movies"
+puts "======"
 # puts ""
 
 # Query the movies data and loop through the results to display the movies output.
-# TODO!
+
+warner_movies = Movie.where({"studio_id" => warner["id"]})
+
+for movie in warner_movies
+    studio = Studio.find_by({ "name" => "Warner Bros" })
+
+    name = studio["name"]
+
+    title = movie["title"]
+    year_released = movie["year_released"]
+    rated = movie["rated"]
+    
+    puts "#{title} #{year_released} #{rated} #{name}"
+end
+
+
+
 
 # Prints a header for the cast output
 # puts ""
